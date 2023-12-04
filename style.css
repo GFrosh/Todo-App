@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(25,25,25);
+}
+
+#app {
+    background-color: black;
+    color: red;
+    
+    border: solid 4px red;
+    border-radius: 20px;
+    margin: 2em auto;
+    text-align: center;
+    
+    
+    padding: 30px 0 60px 0;
+    
+    width: 93%;
+}
+
+#taskList {
+    text-align: left;
+    margin: 20px 0 0 27px;
+    
+    font-size: 20px;
+    font-family: cursive;
+}
+
+#delete {
+    margin: 0 0 0 1pc;
+    font-size: 13px;
+    border: solid 2px red;
+    border-radius: 8px;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+button {
+    margin: 0;
+    cursor: hand;
+    
+    border: solid 2.5px red;
+    border-radius: 5px;
+    
+    font-size: 17px;
+    
+    background-color: rgb(75,75,75);
+    color: red;
+}
+
+input {
+    border: solid 2.5px red;
+    border-radius: 5px;
+    
+    font-size: 17px;
+    
+    background-color: rgb(50,50,50);
+    color: red;
+}
+
+input::placeholder {
+    color: white;
+    padding-left: 15px;
+}
