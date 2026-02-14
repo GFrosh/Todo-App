@@ -5,7 +5,6 @@ function TodoInput({ currentMood, todos, setTodos }) {
   const [text, setText] = useState("");
 
   function handleAddTodo() {
-
     if (text.trim() === "") return;
 
     const newTodo = {
@@ -17,7 +16,6 @@ function TodoInput({ currentMood, todos, setTodos }) {
     };
 
     setTodos([...todos, newTodo]);
-
     setText("");
   }
 
@@ -40,4 +38,3 @@ function TodoInput({ currentMood, todos, setTodos }) {
 }
 
 export default TodoInput;
-

@@ -4,7 +4,6 @@ function MoodSelector({ currentMood, setCurrentMood }) {
   return (
     <div>
       <h2>Select Mood</h2>
-
       {moods.map((mood) => (
         <button
           key={mood}
@@ -23,4 +22,3 @@ function MoodSelector({ currentMood, setCurrentMood }) {
 }
 
 export default MoodSelector;
-

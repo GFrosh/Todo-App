@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./styles/App.css";
 import MoodSelector from "./components/MoodSelector";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
