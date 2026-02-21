@@ -14,7 +14,6 @@ function TodoInput({ currentMood, todos, setTodos }) {
       completed: false,
       createdAt: Date.now()
     };
-
     setTodos([...todos, newTodo]);
     setText("");
   }
@@ -22,14 +21,11 @@ function TodoInput({ currentMood, todos, setTodos }) {
   return (
     <div>
       <h2>Add Todo</h2>
-
       <input
         type="text"
         placeholder="Enter task..."
         value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-
+        onChange={(e) => setText(e.target.value)} />
       <button onClick={handleAddTodo}>
         Add
       </button>
@@ -38,3 +34,4 @@ function TodoInput({ currentMood, todos, setTodos }) {
 }
 
 export default TodoInput;
+
