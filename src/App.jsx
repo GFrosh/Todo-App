@@ -23,7 +23,7 @@ function App() {
       todos={todos}
       setTodos={setTodos}
     />
-    <TodoList todos={todos} />
+    <TodoList todos={todos} setTodos={setTodos} />
     <p>Total todos: {todos.length}</p>
   </>
 );

@@ -1,0 +1,18 @@
+.mood-selector button {
+    margin: 5px;
+    padding: 8px;
+    border: solid 1.5px #000;
+    border-radius: 5px;
+    font-weight: normal;
+    background: #502387;
+    cursor: pointer;
+}
+
+.mood-selector button:hover {
+    background: #7a4de8;
+}
+
+.mood-selector button.selected {
+    font-weight: bold;
+    background: #3b12a1;
+}
