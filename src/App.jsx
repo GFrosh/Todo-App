@@ -3,30 +3,31 @@ import "./styles/App.css";
 import MoodSelector from "./components/MoodSelector";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
+import Status from "./components/Status";
 
 function App() {
-  // list of todos
-  const [todos, setTodos] = useState([]);
+	// list of todos
+	const [todos, setTodos] = useState([]);
 
-  // currently selected mood
-  const [currentMood, setCurrentMood] = useState("happy");
+	// currently selected mood
+	const [currentMood, setCurrentMood] = useState("lazy");
 
-  return (
-  <>
-    <h1>Mood Swing Todo App</h1>
-    <MoodSelector
-      currentMood={currentMood}
-      setCurrentMood={setCurrentMood}
-    />
-    <TodoInput
-      currentMood={currentMood}
-      todos={todos}
-      setTodos={setTodos}
-    />
-    <TodoList todos={todos} setTodos={setTodos} />
-    <p>Total todos: {todos.length}</p>
-  </>
-);
+	return (
+	<>
+		<h1>Mood Swing Todo App</h1>
+		<MoodSelector
+		currentMood={currentMood}
+		setCurrentMood={setCurrentMood}
+		/>
+		<TodoInput
+		currentMood={currentMood}
+		todos={todos}
+		setTodos={setTodos}
+		/>
+		<TodoList todos={todos} setTodos={setTodos} />
+		<p>Total todos: {todos.length}</p>
+	</>
+	);
 }
 
 export default App;

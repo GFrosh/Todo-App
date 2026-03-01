@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function TodoInput({ currentMood, todos, setTodos }) {
 	
-	const [text, setText] = useState("Do the laundry...");
+	const [text, setText] = useState("Do the laundry");
 
 	function handleAddTodo() {
 		if (text.trim() === "") return alert("Please enter a task");

@@ -1,5 +1,35 @@
+.list {
+    margin: 2em 1em;
+}
+
 .per-todo {
-    border: 1px solid black;
-    margin: 8px 0;
+    background: #ff3499;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px #000 inset;
+    margin: 1rem auto;
     padding: 8px;
+}
+
+.statuses {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.statuses button {
+    flex: 1;
+    background: peachpuff;
+    padding: 6px;
+    border: none;
+}
+
+.statuses #pending {
+    border-left: solid 1px #000;
+    border-right: solid 1px #000;
+}
+
+.statuses .selected {
+    background: rgb(254, 156, 69);
 }
