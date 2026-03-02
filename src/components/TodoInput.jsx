@@ -8,13 +8,13 @@ function TodoInput({ currentMood, todos, setTodos }) {
 		if (text.trim() === "") return alert("Please enter a task");
 
 		const newTodo = {
-		id: crypto.randomUUID(),
-		text: text,
-		mood: currentMood,
-		completed: false,
-		createdAt: Date.now()
+			id: crypto.randomUUID(),
+			text: text,
+			mood: currentMood,
+			completed: false,
+			createdAt: Date.now()
 		};
-		setTodos([...todos, newTodo]);
+		setTodos([ ...todos, newTodo ]);
 		setText("");
 	}
 
@@ -34,4 +34,3 @@ function TodoInput({ currentMood, todos, setTodos }) {
 }
 
 export default TodoInput;
-

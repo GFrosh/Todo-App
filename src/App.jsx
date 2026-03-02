@@ -3,7 +3,7 @@ import "./styles/App.css";
 import MoodSelector from "./components/MoodSelector";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
-import Status from "./components/Status";
+
 
 function App() {
 	// list of todos
