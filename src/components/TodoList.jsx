@@ -8,6 +8,7 @@ function TodoList({ todos, setTodos }) {
 	const updateStatus = (id, completed) => setTodos(prevTodos => prevTodos.map(todo => todo.id === id ? { ...todo, completed } : todo));
 
 
+
 	const filteredTodos = useMemo(() => {
 		if (status === "pending") return todos.filter(t => !t.completed);
 		if (status === "completed") return todos.filter(t => t.completed);
