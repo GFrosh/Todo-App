@@ -1,14 +1,94 @@
-* {
-	margin: 0;
-	padding: 0;
-    box-sizing: border-box;
+/* ── CSS custom properties (overridden per-mood via body classes) ── */
+:root {
+  --mood-primary:  #e91e8c;
+  --mood-secondary: #ff6ec7;
+  --mood-accent: #ff9edb;
+  --mood-bg-a: #ff6ec7;
+  --mood-bg-b: #b01070;
+  --card-bg: rgba(255, 255, 255, 0.96);
+  --text-primary: #1a202c;
+  --text-secondary: #718096;
+  --border-radius-lg: 20px;
+  --border-radius-md: 12px;
+  --border-radius-sm: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-card: 0 25px 60px rgba(0, 0, 0, 0.18);
+  --shadow-btn:  0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Per-mood background themes ── */
+body.mood-happy {
+  --mood-primary:  #f59e0b;
+  --mood-secondary: #fbbf24;
+  --mood-accent: #fde68a;
+  --mood-bg-a: #fcd34d;
+  --mood-bg-b: #d97706;
+}
+body.mood-sad {
+  --mood-primary:  #3b82f6;
+  --mood-secondary: #60a5fa;
+  --mood-accent: #bfdbfe;
+  --mood-bg-a: #60a5fa;
+  --mood-bg-b: #1d4ed8;
+}
+body.mood-angry {
+  --mood-primary:  #ef4444;
+  --mood-secondary: #f87171;
+  --mood-accent: #fecaca;
+  --mood-bg-a: #f87171;
+  --mood-bg-b: #b91c1c;
+}
+body.mood-serious {
+  --mood-primary:  #374151;
+  --mood-secondary: #6b7280;
+  --mood-accent: #d1d5db;
+  --mood-bg-a: #6b7280;
+  --mood-bg-b: #111827;
+}
+body.mood-lazy {
+  --mood-primary:  #8b5cf6;
+  --mood-secondary: #a78bfa;
+  --mood-accent: #ede9fe;
+  --mood-bg-a: #a78bfa;
+  --mood-bg-b: #6d28d9;
+}
+
+/* ── Base reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-	display: flex;
-	justify-content: center;
-    align-items: center;
-    background: hotpink;
-    font-family: Arial, Sans-Serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  background: linear-gradient(135deg, var(--mood-bg-a) 0%, var(--mood-bg-b) 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  transition: background 0.6s ease;
+}
+
+/* ── Keyframe animations ── */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }

@@ -1,76 +1,102 @@
 import "../styles/List.css";
 import { useState, useMemo } from "react";
-import { FaCheck, FaTimes } from "react-icons/fa";
+import { FaCheck, FaUndo, FaTrash } from "react-icons/fa";
+import { MOODS } from "../moodConfig";
 
 function TodoList({ todos, setTodos }) {
-  	const [status, setStatus] = useState("total");
+	const [filter, setFilter] = useState("total");
 
-	const updateStatus = (id, completed) => setTodos(prevTodos => prevTodos.map(todo => todo.id === id ? { ...todo, completed } : todo));
+	const updateStatus = (id, completed) =>
+		setTodos(prevTodos =>
+			prevTodos.map(todo => todo.id === id ? { ...todo, completed } : todo)
+		);
 
-
+	const deleteTodo = (id) =>
+		setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
 
 	const filteredTodos = useMemo(() => {
-		if (status === "pending") return todos.filter(t => !t.completed);
-		if (status === "completed") return todos.filter(t => t.completed);
+		if (filter === "pending")   return todos.filter(t => !t.completed);
+		if (filter === "completed") return todos.filter(t =>  t.completed);
 		return todos;
-	}, [todos, status]);
+	}, [todos, filter]);
 
 	return (
 		<div className="list">
 			<div className="statuses">
 				<button
-				className={status === "total" ? "selected" : ""}
-				onClick={() => setStatus("total")}
+					className={filter === "total" ? "selected" : ""}
+					onClick={() => setFilter("total")}
 				>
-				Total
+					All ({todos.length})
 				</button>
-
 				<button
-				className={status === "pending" ? "selected" : ""}
-				onClick={() => setStatus("pending")}
+					className={filter === "pending" ? "selected" : ""}
+					onClick={() => setFilter("pending")}
 				>
-				Pending
+					Pending ({todos.filter(t => !t.completed).length})
 				</button>
-
 				<button
-				className={status === "completed" ? "selected" : ""}
-				onClick={() => setStatus("completed")}
+					className={filter === "completed" ? "selected" : ""}
+					onClick={() => setFilter("completed")}
 				>
-				Completed
+					Done ({todos.filter(t => t.completed).length})
 				</button>
-		</div>
+			</div>
 
 			{filteredTodos.length === 0 ? (
-				<p>No tasks yet. Your productivity is theoretical.</p>
+				<div className="empty-state">
+					<div className="empty-icon">📋</div>
+					<p>No tasks here. Add something above!</p>
+				</div>
 			) : (
 				filteredTodos.map(todo => (
-					<div key={todo.id} className="per-todo">
-					<p>
-						<strong
-							style={{
-							textDecoration: todo.completed ? "line-through" : "none",
-							color: todo.completed ? "gray" : "black"
-							}}
-						>
-							{todo.text}
-						</strong>
-					</p>
+					<div
+						key={todo.id}
+						className={`per-todo${todo.completed ? " completed-card" : ""}`}
+					>
+						<div className="todo-content">
+							<p className={`todo-text${todo.completed ? " done" : ""}`}>
+								{todo.text}
+							</p>
+							<div className="todo-meta">
+								<span className="mood-badge">
+									{MOODS[todo.mood]?.emoji} {todo.mood}
+								</span>
+								<span className={`status-badge${todo.completed ? "" : " pending"}`}>
+									{todo.completed ? "Completed" : "Pending"}
+								</span>
+							</div>
+						</div>
 
-					<p>Mood: {todo.mood}</p>
-					<p>Status: {todo.completed ? "Completed" : "Pending"}</p>
-
-					<div className="actions">
-					<button onClick={() => updateStatus(todo.id, false)}>
-						<FaTimes />
-					</button>
-
-					<button onClick={() => updateStatus(todo.id, true)}>
-						<FaCheck />
-					</button>
+						<div className="actions">
+							{todo.completed ? (
+								<button
+									className="btn-undo"
+									title="Mark as pending"
+									onClick={() => updateStatus(todo.id, false)}
+								>
+									<FaUndo />
+								</button>
+							) : (
+								<button
+									className="btn-done"
+									title="Mark as done"
+									onClick={() => updateStatus(todo.id, true)}
+								>
+									<FaCheck />
+								</button>
+							)}
+							<button
+								className="btn-delete"
+								title="Delete task"
+								onClick={() => deleteTodo(todo.id)}
+							>
+								<FaTrash />
+							</button>
+						</div>
 					</div>
-				</div>
-			))
-		)}
+				))
+			)}
 		</div>
 	);
 }
