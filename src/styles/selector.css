@@ -1,18 +1,62 @@
+/* ── Mood selector wrapper ── */
+.mood-selector {
+  margin-bottom: 24px;
+}
+
+.mood-selector h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+/* ── Mood button grid ── */
+.mood-selector .mood-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .mood-selector button {
-    margin: 5px;
-    padding: 8px;
-    border: solid 1.5px #000;
-    border-radius: 5px;
-    font-weight: normal;
-    background: #502387;
-    cursor: pointer;
+  flex: 1 1 auto;
+  min-width: 80px;
+  padding: 10px 8px;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f1f5f9;
+  color: var(--text-primary);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mood-selector button .mood-emoji {
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
 .mood-selector button:hover {
-    background: #7a4de8;
+  background: var(--mood-accent);
+  border-color: var(--mood-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn);
 }
 
 .mood-selector button.selected {
-    font-weight: bold;
-    background: #3b12a1;
+  background: var(--mood-primary);
+  color: #fff;
+  border-color: var(--mood-primary);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  animation: pop 0.25s ease;
+}
+
+.mood-selector button.selected .mood-emoji {
+  animation: pop 0.3s ease;
 }

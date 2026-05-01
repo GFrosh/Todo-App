@@ -1,36 +1,184 @@
+/* ── List wrapper ── */
 .list {
-    margin: 2em 1em;
+  margin-top: 8px;
 }
 
-.per-todo {
-    background: #ff3499;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px #000 inset;
-    margin: 1rem auto;
-    padding: 8px;
-    cursor: pointer;
-}
-
+/* ── Filter tabs ── */
 .statuses {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  background: #f1f5f9;
+  border-radius: var(--border-radius-md);
+  padding: 4px;
 }
 
 .statuses button {
-    flex: 1;
-    background: peachpuff;
-    padding: 6px;
-    border: none;
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 8px 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.statuses #pending {
-    border-left: solid 1px #000;
-    border-right: solid 1px #000;
+.statuses button:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.7);
 }
 
-.statuses .selected {
-    background: rgb(254, 156, 69);
+.statuses button.selected {
+  background: #fff;
+  color: var(--mood-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Empty state ── */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.empty-state .empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+/* ── Individual todo card ── */
+.per-todo {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: var(--border-radius-md);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: var(--transition);
+  animation: slideIn 0.3s ease both;
+}
+
+.per-todo:hover {
+  border-color: var(--mood-secondary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.per-todo.completed-card {
+  opacity: 0.65;
+}
+
+/* ── Todo content area ── */
+.todo-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  word-break: break-word;
+  transition: var(--transition);
+}
+
+.todo-text.done {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+/* ── Mood badge ── */
+.todo-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.mood-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--mood-accent);
+  color: var(--mood-primary);
+  text-transform: capitalize;
+}
+
+.status-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* ── Action buttons ── */
+.actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.actions button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.85rem;
+}
+
+.actions .btn-done {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.actions .btn-done:hover {
+  background: #059669;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.actions .btn-undo {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.actions .btn-undo:hover {
+  background: #d97706;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.actions .btn-delete {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.actions .btn-delete:hover {
+  background: #dc2626;
+  color: #fff;
+  transform: scale(1.1);
 }

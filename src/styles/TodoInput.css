@@ -1,0 +1,73 @@
+/* ── Add-todo section ── */
+.todo-input {
+  margin-bottom: 20px;
+}
+
+.todo-input h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.todo-input .input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: var(--border-radius-md);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: #fff;
+  outline: none;
+  transition: var(--transition);
+}
+
+.todo-input input::placeholder {
+  color: #a0aec0;
+}
+
+.todo-input input:focus {
+  border-color: var(--mood-primary);
+  box-shadow: 0 0 0 3px var(--mood-accent);
+}
+
+.todo-input .btn-add {
+  padding: 12px 20px;
+  background: var(--mood-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: var(--shadow-btn);
+}
+
+.todo-input .btn-add:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.todo-input .btn-add:active {
+  transform: translateY(0);
+}
+
+.todo-input .input-error {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #dc2626;
+  font-weight: 500;
+}
