@@ -6,11 +6,30 @@ import TodoList from "./components/TodoList";
 
 
 function App() {
-	// list of todos
-	const [todos, setTodos] = useState([]);
+	// list of todos — initialised from localStorage
+	const [todos, setTodos] = useState(() => {
+		try {
+			const stored = localStorage.getItem("todos");
+			return stored ? JSON.parse(stored) : [];
+		} catch {
+			return [];
+		}
+	});
 
-	// currently selected mood
-	const [currentMood, setCurrentMood] = useState("lazy");
+	// currently selected mood — initialised from localStorage
+	const [currentMood, setCurrentMood] = useState(() => {
+		return localStorage.getItem("currentMood") || "lazy";
+	});
+
+	// Persist todos to localStorage whenever they change
+	useEffect(() => {
+		localStorage.setItem("todos", JSON.stringify(todos));
+	}, [todos]);
+
+	// Persist currentMood to localStorage whenever it changes
+	useEffect(() => {
+		localStorage.setItem("currentMood", currentMood);
+	}, [currentMood]);
 
 	// Apply mood class to body for global theming
 	useEffect(() => {
